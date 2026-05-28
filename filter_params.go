@@ -19,3 +19,10 @@ func newFilterParamsFromC(c *C.AVFilterParams) *FilterParams {
 func (fp *FilterParams) FilterName() string {
 	return C.GoString(fp.c.filter_name)
 }
+
+func (fp *FilterParams) FilterContext() *FilterContext {
+	if fp.c.filter == nil {
+		return nil
+	}
+	return newFilterContext(fp.c.filter)
+}

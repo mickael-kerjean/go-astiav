@@ -1,4 +1,4 @@
-module github.com/asticode/go-astiav
+module github.com/mickael-kerjean/go-astiav
 
 go 1.21
 
