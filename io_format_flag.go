@@ -20,7 +20,6 @@ const (
 	IOFormatFlagNobinsearch  = IOFormatFlag(C.AVFMT_NOBINSEARCH)
 	IOFormatFlagNogensearch  = IOFormatFlag(C.AVFMT_NOGENSEARCH)
 	IOFormatFlagNoByteSeek   = IOFormatFlag(C.AVFMT_NO_BYTE_SEEK)
-	IOFormatFlagAllowFlush   = IOFormatFlag(C.AVFMT_ALLOW_FLUSH)
 	IOFormatFlagTsNonstrict  = IOFormatFlag(C.AVFMT_TS_NONSTRICT)
 	IOFormatFlagTsNegative   = IOFormatFlag(C.AVFMT_TS_NEGATIVE)
 	IOFormatFlagSeekToPts    = IOFormatFlag(C.AVFMT_SEEK_TO_PTS)
