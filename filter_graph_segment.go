@@ -39,3 +39,27 @@ func (fgs *FilterGraphSegment) Chains() (cs []*FilterChain) {
 func (fgs *FilterGraphSegment) NbChains() int {
 	return int(fgs.c.nb_chains)
 }
+
+func (fgs *FilterGraphSegment) CreateFilters(flags int) error {
+	return newError(C.avfilter_graph_segment_create_filters(fgs.c, C.int(flags)))
+}
+
+func (fgs *FilterGraphSegment) ApplyOpts(flags int) error {
+	return newError(C.avfilter_graph_segment_apply_opts(fgs.c, C.int(flags)))
+}
+
+func (fgs *FilterGraphSegment) Init(flags int) error {
+	return newError(C.avfilter_graph_segment_init(fgs.c, C.int(flags)))
+}
+
+func (fgs *FilterGraphSegment) Link(flags int, inputs, outputs *FilterInOut) error {
+	var ic **C.AVFilterInOut
+	if inputs != nil {
+		ic = &inputs.c
+	}
+	var oc **C.AVFilterInOut
+	if outputs != nil {
+		oc = &outputs.c
+	}
+	return newError(C.avfilter_graph_segment_link(fgs.c, C.int(flags), ic, oc))
+}

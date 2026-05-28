@@ -53,3 +53,17 @@ func (i *FilterInOut) SetNext(n *FilterInOut) {
 	}
 	i.c.next = nc
 }
+
+func (i *FilterInOut) FilterContext() *FilterContext {
+	if i.c.filter_ctx == nil {
+		return nil
+	}
+	return newFilterContext(i.c.filter_ctx)
+}
+
+func (i *FilterInOut) Next() *FilterInOut {
+	if i.c.next == nil {
+		return nil
+	}
+	return newFilterInOutFromC(i.c.next)
+}

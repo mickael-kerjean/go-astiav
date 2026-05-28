@@ -62,3 +62,7 @@ func (fc *FilterContext) SetHardwareDeviceContext(hdc *HardwareDeviceContext) {
 func (fc *FilterContext) Filter() *Filter {
 	return newFilterFromC(fc.c.filter)
 }
+
+func (fc *FilterContext) LinkTo(srcPad int, dst *FilterContext, dstPad int) error {
+	return newError(C.avfilter_link(fc.c, C.uint(srcPad), dst.c, C.uint(dstPad)))
+}
